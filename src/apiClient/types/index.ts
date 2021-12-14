@@ -1,14 +1,15 @@
 import { Type, Static } from '@sinclair/typebox'
 import Ajv from 'ajv';
 
-const userSchema = Type.Object(
-  {
-    id: Type.String(),
-    name: Type.Optional(Type.String()),
-    avatarUrl: Type.Optional(Type.Union([Type.String(), Type.Null()])),
-  },
+const userSchema = Type.Strict(
+  Type.Object(
+    {
+      id: Type.String(),
+      name: Type.Optional(Type.String()),
+      avatarUrl: Type.Optional(Type.Union([Type.String(), Type.Null()])),
+    },
+  )
 );
-export type User = Static<typeof userSchema>;
 
 const resultSchema = Type.Object({
   object: Type.String(),
@@ -63,8 +64,6 @@ const resultSchema = Type.Object({
   url: Type.String(),
 });
 
-export type Result = Static<typeof resultSchema>;
-
 export const schema = Type.Strict(
   Type.Object(
     {
@@ -74,9 +73,9 @@ export const schema = Type.Strict(
   )
 );
 
-
-export type Response = Static<typeof schema>;
-
+type Response = Static<typeof schema>;
 
 const ajv = new Ajv({ strict: "log" });
-export const validator = ajv.compile<Response>(schema);
+const validator = ajv.compile<Response>(schema);
+
+export { Response, validator };

@@ -1,9 +1,13 @@
-import { Response, User } from '../apiClient';
+import { Response } from '../apiClient/types';
 
 import { compose, groupBy, keys, prop, sortBy, toLower } from 'ramda';
 
 type Chart = {
-  user: User;
+  user: {
+    id: string;
+    name?: string;
+    avatorIcon?: string;
+  };
   data: {
     key: string;
     title: string;

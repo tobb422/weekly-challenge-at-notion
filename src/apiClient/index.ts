@@ -1,9 +1,9 @@
-import { validator, Response, User } from './types';
+import { validator } from './types';
 
 import fetch from 'node-fetch';
 import humps from 'humps';
 
-const fetchWeeklyChallengeLogs: () => Promise<Response | null> = () => {
+const fetchWeeklyChallengeLogs = () => {
   return fetch(
     'https://api.notion.com/v1/databases/8730655fa7424de691e157821c789dd2/query',
     {
@@ -26,4 +26,4 @@ const fetchWeeklyChallengeLogs: () => Promise<Response | null> = () => {
   }); 
 }
 
-export { fetchWeeklyChallengeLogs, Response, User };
+export { fetchWeeklyChallengeLogs };

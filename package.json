@@ -2,26 +2,31 @@
   "name": "weekly-challenge",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "src/server.ts",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx swc index.ts -d dist/",
-    "start": "node dist/index.js"
+    "build": "npx swc src/ -d dist/",
+    "start": "node --experimental-specifier-resolution=node dist/server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@sinclair/typebox": "^0.23.1",
     "ajv": "^8.8.2",
+    "fastify": "^3.25.0",
+    "fastify-cors": "^6.0.2",
     "humps": "^2.0.1",
     "node-fetch": "^3.1.0",
+    "pino": "^7.5.1",
+    "pino-pretty": "^7.3.0",
     "ramda": "^0.27.1"
   },
   "devDependencies": {
     "@swc/cli": "^0.1.52",
     "@swc/core": "^1.2.118",
     "@types/humps": "^2.0.1",
+    "@types/node": "^14.18.0",
     "@types/ramda": "^0.27.60",
     "regenerator-runtime": "^0.13.9",
     "typescript": "^4.5.2"
